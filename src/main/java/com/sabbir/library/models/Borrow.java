@@ -11,6 +11,12 @@ public class Borrow {
 
     public Borrow() {}
 
+    public Borrow(int id, int bookId, int memberId) {
+        this.id = id;
+        this.bookId = bookId;
+        this.memberId = memberId;
+    }
+
     public Borrow(int id, LocalDate returnDate, LocalDate borrowDate, int memberId, int bookId) {
         this.id = id;
         this.returnDate = returnDate;

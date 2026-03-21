@@ -1,0 +1,38 @@
+package com.sabbir.library.service;
+
+import com.sabbir.library.models.Book;
+import com.sabbir.library.models.Borrow;
+import com.sabbir.library.repository.BookRepository;
+import com.sabbir.library.repository.BorrowRepository;
+
+public class BorrowService {
+
+    private BorrowRepository borrowRepo;
+    private BookRepository bookRepo;
+
+    public BorrowService(BorrowRepository borrowRepo, BookRepository bookRepo) {
+        this.borrowRepo = borrowRepo;
+        this.bookRepo = bookRepo;
+    }
+
+    public void borrowBook(int bookId, int memberId, int borrowId){
+        Book book = bookRepo.findById(bookId);
+
+        if(book == null){
+            System.out.println("Book not found!!");
+            return;
+        }
+
+        if(book.getAvailableCopies() <= 0){
+            System.out.println("Book is not available now!!");
+            return;
+        }
+
+        book.setAvailableCopies(book.getAvailableCopies() - 1);
+
+        Borrow borrow =new Borrow(borrowId, bookId, memberId);
+        borrowRepo.save(borrowId, borrow);
+
+        System.out.println("Book borrowed successfully!");
+    }
+}
