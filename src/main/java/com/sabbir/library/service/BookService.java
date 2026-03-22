@@ -27,5 +27,6 @@ public class BookService {
 
     public void delete(int id){
         repo.remove(id);
+        System.out.println("Book has been removed!!");
     }
 }

@@ -10,6 +10,9 @@ public class BorrowService {
     private BorrowRepository borrowRepo;
     private BookRepository bookRepo;
 
+    public BorrowService() {
+    }
+
     public BorrowService(BorrowRepository borrowRepo, BookRepository bookRepo) {
         this.borrowRepo = borrowRepo;
         this.bookRepo = bookRepo;
