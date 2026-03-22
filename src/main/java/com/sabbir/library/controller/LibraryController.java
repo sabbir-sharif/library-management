@@ -2,9 +2,12 @@
 
 package com.sabbir.library.controller;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.sabbir.library.localdb.JsonStorage;
 import com.sabbir.library.models.*;
 import com.sabbir.library.service.*;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class LibraryController {
@@ -29,6 +32,14 @@ public class LibraryController {
     public void start() {
 
         while (true) {
+            List<Book> books =
+                    JsonStorage.load("src/main/resources/data/books.json",
+                            new TypeReference<List<Book>>() {});
+
+            for (Book b : books) {
+                bookService.addBook(b.getId(), b);
+            }
+
             System.out.println("\n1 Add Book\n2 View Books\n3 Delete Book\n4 Borrow Book\n5 Exit");
 
             int choice = sc.nextInt();
@@ -40,6 +51,12 @@ public class LibraryController {
                 case 4 -> borrowBook();
                 case 5 -> System.exit(0);
             }
+
+
+            JsonStorage.save(
+                    "src/main/resources/data/books.json",
+                    bookService.findAll()
+            );
         }
     }
 
@@ -52,7 +69,7 @@ public class LibraryController {
         String author = sc.nextLine();
 
         Book book = new Book((int)(Math.random()*1000), title, author, "#001", 5);
-        bookService.addBook(book);
+        bookService.addBook(book.getId(), book);
     }
 
     private void viewBooks() {

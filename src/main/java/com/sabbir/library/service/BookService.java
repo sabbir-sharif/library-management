@@ -13,7 +13,7 @@ public class BookService {
         this.repo = repo;
     }
 
-    public void addBook(Book book){
+    public void addBook(int id, Book book){
         repo.save(book.getId(), book);
     }
 
