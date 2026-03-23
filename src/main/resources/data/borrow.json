@@ -1,1 +1,9 @@
-[{"id":786,"bookId":229,"memberId":541,"borrowDate":null,"returnDate":null}]
+[
+  {
+    "id":786,
+    "bookId":229,
+    "memberId":541,
+    "borrowDate":null,
+    "returnDate":null
+  }
+]
