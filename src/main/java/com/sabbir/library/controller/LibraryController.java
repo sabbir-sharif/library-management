@@ -40,7 +40,7 @@ public class LibraryController {
                 bookService.addBook(b.getId(), b);
             }
 
-            System.out.println("\n1 Add Book\n2 View Books\n3 Delete Book\n4 Borrow Book\n5 Exit");
+            System.out.println("\n1 Add Book\n2 View Books\n3 Delete Book\n4 Borrow Book\n5 Add Member\n6 Delete Member\7n View All Members\n8 Return Book\n9 Exit");
 
             int choice = sc.nextInt();
 
@@ -49,7 +49,11 @@ public class LibraryController {
                 case 2 -> viewBooks();
                 case 3 -> deleteBook();
                 case 4 -> borrowBook();
-                case 5 -> System.exit(0);
+                case 5 -> addMember();
+                case 6 -> deleteMember();
+                case 7 -> viewMembers();
+                case 8 -> returnBook();
+                case 9 -> System.exit(0);
             }
 
 
@@ -68,7 +72,13 @@ public class LibraryController {
         System.out.print("Author: ");
         String author = sc.nextLine();
 
-        Book book = new Book((int)(Math.random()*1000), title, author, "#001", 5);
+        System.out.print("ISBN: ");
+        String isbn = sc.nextLine();
+
+        System.out.print("Amount of Coppies: ");
+        int copies = sc.nextInt();
+
+        Book book = new Book((int)(Math.random()*1000), title, author, isbn, copies);
         bookService.addBook(book.getId(), book);
     }
 
@@ -85,10 +95,46 @@ public class LibraryController {
         bookService.delete(bookId);
     }
 
+    private void addMember(){
+        sc.nextLine();
+        System.out.println("Member Name: ");
+        String name = sc.nextLine();
+
+        System.out.println("Email: ");
+        String email = sc.nextLine();
+
+        System.out.println("Phone: ");
+        String phone = sc.nextLine();
+
+        Member member = new Member((int)(Math.random()*1000), phone, email, name);
+        memberService.addMember(member);
+    }
+
+    private void viewMembers(){
+        for (Member m: memberService.findAll()){
+            System.out.println(m);
+        }
+    }
+
+    private void deleteMember(){
+        System.out.println("Member Id: ");
+        int memberId = sc.nextInt();
+        memberService.delete(memberId);
+    }
+
     private void borrowBook() {
-        System.out.print("Book ID: ");
+        System.out.print("Book Id: ");
         int bookId = sc.nextInt();
 
-        borrowService.borrowBook(bookId, 1, (int)(Math.random()*1000));
+        System.out.print("Member Id: ");
+        int memberId = sc.nextInt();
+
+        borrowService.borrowBook(bookId, memberId, (int)(Math.random()*1000));
+    }
+
+    private void returnBook(){
+        System.out.println("Book Id: ");
+        int bookId = sc.nextInt();
+        borrowService.returnBook(bookId);
     }
 }

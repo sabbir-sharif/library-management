@@ -28,5 +28,6 @@ public class MemberService {
 
     public void delete(int id){
         repo.remove(id);
+        System.out.println("Member has been removed!!");
     }
 }

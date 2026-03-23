@@ -38,4 +38,13 @@ public class BorrowService {
 
         System.out.println("Book borrowed successfully!");
     }
+
+    public void returnBook(int id){
+        Book book = bookRepo.findById(id);
+        book.setAvailableCopies(book.getAvailableCopies() + 1);
+
+        bookRepo.save(id, book);
+
+        System.out.println("Book returned successfully! :)");
+    }
 }
