@@ -65,4 +65,8 @@ public class BorrowService {
     public List<Borrow> findAll(){
         return borrowRepo.findAll();
     }
+
+    public Borrow findById(int id){
+        return borrowRepo.findById(id);
+    }
 }

@@ -59,12 +59,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" +
-                "id= " + id +
-                ", name= '" + name + '\'' +
-                ", author= '" + author + '\'' +
-                ", isbn= '" + isbn + '\'' +
-                ", availableCopies= " + availableCopies +
-                '}';
+        return String.format("| %-5d | %-20s | %-20s | %-15s | %-7d |",
+                id, name, author, isbn, availableCopies);
     }
 }

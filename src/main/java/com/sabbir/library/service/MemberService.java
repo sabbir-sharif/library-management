@@ -1,6 +1,5 @@
 package com.sabbir.library.service;
 
-import com.sabbir.library.models.Book;
 import com.sabbir.library.models.Member;
 import com.sabbir.library.repository.MemberRepository;
 
@@ -14,7 +13,7 @@ public class MemberService {
         this.repo = repo;
     }
 
-    public void addMember(Member member){
+    public void addMember(int id, Member member){
         repo.save(member.getId(), member);
     }
 

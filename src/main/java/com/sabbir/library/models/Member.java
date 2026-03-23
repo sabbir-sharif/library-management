@@ -49,11 +49,7 @@ public class Member {
 
     @Override
     public String toString() {
-        return "Member{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                '}';
+        return String.format("| %-5d | %-20s | %-25s | %-15s |",
+                id, name, email, phone);
     }
 }

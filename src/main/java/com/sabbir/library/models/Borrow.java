@@ -67,12 +67,7 @@ public class Borrow {
 
     @Override
     public String toString() {
-        return "Borrow{" +
-                "id=" + id +
-                ", bookId=" + bookId +
-                ", memberId=" + memberId +
-                ", borrowDate=" + borrowDate +
-                ", returnDate=" + returnDate +
-                '}';
+        return String.format("| %-5d | %-7d | %-9d | %-12s | %-12s |",
+                id, bookId, memberId, borrowDate, returnDate);
     }
 }

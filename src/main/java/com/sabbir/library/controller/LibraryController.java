@@ -36,8 +36,24 @@ public class LibraryController {
                     JsonStorage.load("src/main/resources/data/books.json",
                             new TypeReference<List<Book>>() {});
 
+            List<Member> members =
+                    JsonStorage.load("src/main/resources/data/members.json",
+                            new TypeReference<List<Member>>() {});
+
+            List<Borrow>  borrows =
+                    JsonStorage.load("src/main/resources/data/borrow.json",
+                            new TypeReference<List<Borrow>>() {});
+
             for (Book b : books) {
                 bookService.addBook(b.getId(), b);
+            }
+
+            for (Member m : members){
+                memberService.addMember(m.getId(), m);
+            }
+
+            for (Borrow br : borrows){
+                borrowService.borrowBook(br.getBookId(), br.getMemberId(), br.getId());
             }
 
             System.out.println("\n1 Add Book\n2 View Books\n3 Delete Book\n4 Add Member\n5 Delete Member\n6 View All Members\n7 Borrow Book\n8 Return Book\n9 Borrow History\n10 Exit");
@@ -62,6 +78,16 @@ public class LibraryController {
                     "src/main/resources/data/books.json",
                     bookService.findAll()
             );
+
+            JsonStorage.save(
+                    "src/main/resources/data/members.json",
+                    memberService.findAll()
+            );
+
+            JsonStorage.save(
+                    "src/main/resources/data/borrow.json",
+                    borrowService.findAll();
+            );
         }
     }
 
@@ -84,6 +110,9 @@ public class LibraryController {
     }
 
     private void viewBooks() {
+        String id = "ID", name = "Name", author = "Author", isbn="ISBN", availableCopies = "AV. C.";
+        System.out.printf("| %-5s | %-20s | %-20s | %-15s | %-7s |\n",
+                id, name, author, isbn, availableCopies);
         for (Book b : bookService.findAll()) {
             System.out.println(b);
         }
@@ -108,10 +137,13 @@ public class LibraryController {
         String phone = sc.nextLine();
 
         Member member = new Member((int)(Math.random()*1000), phone, email, name);
-        memberService.addMember(member);
+        memberService.addMember(m.getId(), member);
     }
 
     private void viewMembers(){
+        String id = "ID", name="Name", email="Email", phone="Phone";
+        System.out.printf("| %-5d | %-20s | %-25s | %-15s |",
+                id, name, email, phone);
         for (Member m: memberService.findAll()){
             System.out.println(m);
         }
@@ -140,6 +172,9 @@ public class LibraryController {
     }
 
     private void borrowHistory(){
+        String id = "Id", bookId = "B. ID", memberId = "M. ID", borrowDate= "Borrow", returnDate="Return";
+        System.out.printf("| %-5s | %-7s | %-9s | %-12s | %-12s |",
+                id, bookId, memberId, borrowDate, returnDate);
         for (Borrow br: borrowService.findAll()){
             System.out.println(br);
         }
