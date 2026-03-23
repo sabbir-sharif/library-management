@@ -1,7 +1,6 @@
 # 📚 Library Management System
 
 ![Java](https://img.shields.io/badge/Java-17-orange)
-![License](https://img.shields.io/badge/License-MIT-green)
 ![Console](https://img.shields.io/badge/Interface-Console-blue)
 
 A **console-based Library Management System** built in Java, demonstrating **object-oriented programming**, **service-repository architecture**, and **clean code practices**. This project simulates real-world library operations such as adding books, managing members, and tracking borrow/return activities.
