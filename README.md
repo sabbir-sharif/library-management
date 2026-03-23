@@ -16,8 +16,7 @@ A **console-based Library Management System** built in Java, demonstrating **obj
 - [How to Run](#-how-to-run)  
 - [Sample Output](#-sample-output)  
 - [Key Learnings](#-key-learning)  
-- [Future Improvements](#-future-improvements)  
-- [License](#-license)  
+- [Future Improvements](#-future-improvements)   
 - [Author](#-author)  
 
 ---
@@ -134,8 +133,7 @@ java -cp bin com.sabbir.library.app.LibraryApplication
 - Integrate a database (e.g., MySQL) for persistent storage
 - Add unit tests for service and repository layers
 
-## 📄 License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 ## 👤 Author
 [Sabbir Sharif]
 - GitHub: [https://github.com/sabbir-sharif](https://github.com/sabbir-sharif/)
