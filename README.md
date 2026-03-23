@@ -136,4 +136,3 @@ java -cp bin com.sabbir.library.app.LibraryApplication
 
 ## 👤 Author
 [Sabbir Sharif]
-- GitHub: [https://github.com/sabbir-sharif](https://github.com/sabbir-sharif/)
