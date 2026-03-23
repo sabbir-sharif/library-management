@@ -86,7 +86,7 @@ public class LibraryController {
 
             JsonStorage.save(
                     "src/main/resources/data/borrow.json",
-                    borrowService.findAll();
+                    borrowService.findAll()
             );
         }
     }
@@ -137,12 +137,12 @@ public class LibraryController {
         String phone = sc.nextLine();
 
         Member member = new Member((int)(Math.random()*1000), phone, email, name);
-        memberService.addMember(m.getId(), member);
+        memberService.addMember(member.getId(), member);
     }
 
     private void viewMembers(){
         String id = "ID", name="Name", email="Email", phone="Phone";
-        System.out.printf("| %-5d | %-20s | %-25s | %-15s |",
+        System.out.printf("| %-5s | %-20s | %-25s | %-15s |\n",
                 id, name, email, phone);
         for (Member m: memberService.findAll()){
             System.out.println(m);
@@ -163,17 +163,19 @@ public class LibraryController {
         int memberId = sc.nextInt();
 
         borrowService.borrowBook(bookId, memberId, (int)(Math.random()*1000));
+        //System.out.println("Book borrowed successfully!");
     }
 
     private void returnBook(){
         System.out.println("Book Id: ");
         int bookId = sc.nextInt();
         borrowService.returnBook(bookId);
+        System.out.println("Book returned successfully!");
     }
 
     private void borrowHistory(){
         String id = "Id", bookId = "B. ID", memberId = "M. ID", borrowDate= "Borrow", returnDate="Return";
-        System.out.printf("| %-5s | %-7s | %-9s | %-12s | %-12s |",
+        System.out.printf("| %-5s | %-7s | %-9s | %-12s | %-12s |\n",
                 id, bookId, memberId, borrowDate, returnDate);
         for (Borrow br: borrowService.findAll()){
             System.out.println(br);

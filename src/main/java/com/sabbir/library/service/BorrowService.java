@@ -50,7 +50,7 @@ public class BorrowService {
         Borrow borrow =new Borrow(borrowId, bookId, memberId);
         borrowRepo.save(borrowId, borrow);
 
-        System.out.println("Book borrowed successfully!");
+        //System.out.println("Book borrowed successfully!");
     }
 
     public void returnBook(int id){
@@ -59,7 +59,7 @@ public class BorrowService {
 
         bookRepo.save(id, book);
 
-        System.out.println("Book returned successfully! :)");
+        //System.out.println("Book returned successfully! :)");
     }
 
     public List<Borrow> findAll(){
