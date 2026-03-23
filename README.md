@@ -88,16 +88,16 @@ LibraryManagementSystem/
 │   │   │   │       └── library/
 │   │   │   │           ├── app/
 │   │   │   │           ├── controller/
-│   │   │   │           ├── model/
+│   │   │   │           ├── models/
 │   │   │   │           ├── repository/
 │   │   │   │           ├── service/
 │   │   │   │           └── localdb/
 |   |   |   |               └── JsonStorage.java
 │   │   |   └── resources/
 |   |   |       └── data/
-|   |   |       └── books.json
-|   |   |       └── members.json
-|   |   |       └── borrow.json
+|   |   |   |       └── books.json
+|   |   |   |       └── members.json
+|   |   |   |       └── borrow.json
 |   |   |   └── test/
 ├── README.md
 ```
@@ -114,7 +114,7 @@ cd library-management
 javac -d bin src/main/java/com/sabbir/library/app/LibraryApplication.java
 java -cp bin com.sabbir.library.app.LibraryApplication
 ```
-2. **Follow the console prompts** to interact with the system (add books, register members, borrow/return books).
+
 ---
 ## 📊 Sample Output
 
@@ -124,7 +124,6 @@ java -cp bin com.sabbir.library.app.LibraryApplication
 - Managing data using in-memory storage and file persistence
 - Designing a console-based user interface with aligned tables
 - Applying OOP principles for clean and maintainable code
-- Handling user input and validation effectively
 - Using Java Collections for data management
 ---
 ## 🔮 Future Improvements
