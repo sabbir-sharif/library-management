@@ -26,7 +26,7 @@ public class LibraryController {
 
         bookService = new BookService(bookRepo);
         memberService = new MemberService(memberRepo);
-        borrowService = new BorrowService(borrowRepo, bookRepo);
+        borrowService = new BorrowService(borrowRepo, bookRepo, memberRepo);
     }
 
     public void start() {
@@ -40,7 +40,7 @@ public class LibraryController {
                 bookService.addBook(b.getId(), b);
             }
 
-            System.out.println("\n1 Add Book\n2 View Books\n3 Delete Book\n4 Borrow Book\n5 Add Member\n6 Delete Member\7n View All Members\n8 Return Book\n9 Exit");
+            System.out.println("\n1 Add Book\n2 View Books\n3 Delete Book\n4 Add Member\n5 Delete Member\n6 View All Members\n7 Borrow Book\n8 Return Book\n9 Borrow History\n10 Exit");
 
             int choice = sc.nextInt();
 
@@ -48,12 +48,13 @@ public class LibraryController {
                 case 1 -> addBook();
                 case 2 -> viewBooks();
                 case 3 -> deleteBook();
-                case 4 -> borrowBook();
-                case 5 -> addMember();
-                case 6 -> deleteMember();
-                case 7 -> viewMembers();
+                case 4 -> addMember();
+                case 5 -> deleteMember();
+                case 6 -> viewMembers();
+                case 7 -> borrowBook();
                 case 8 -> returnBook();
-                case 9 -> System.exit(0);
+                case 9 -> borrowHistory();
+                case 10 -> System.exit(0);
             }
 
 
@@ -136,5 +137,11 @@ public class LibraryController {
         System.out.println("Book Id: ");
         int bookId = sc.nextInt();
         borrowService.returnBook(bookId);
+    }
+
+    private void borrowHistory(){
+        for (Borrow br: borrowService.findAll()){
+            System.out.println(br);
+        }
     }
 }
