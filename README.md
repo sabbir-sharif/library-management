@@ -70,7 +70,7 @@ Repository Layer (Data Storage)
 
 - Java 17+
 - Object-Oriented Programming (OOP)  
-- Jackson (for JSON serialization, if needed)
+- Jackson (for JSON serialization)
 - Console-based user interface
 - Java Collections Framework (Map, List)
 - File I/O (for data persistence) 
